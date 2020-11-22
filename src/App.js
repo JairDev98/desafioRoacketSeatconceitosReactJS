@@ -32,12 +32,9 @@ function App() {
     await api.delete(`repositories/${id}`).then(()=>{
       return api.get('repositories');
     })
-    .then(res=>{
-      const repositorie = res.data;
-      setRepositories([...repositorie]);
-    })
-
-    
+    .then(reponse=>{
+      setRepositories(reponse.data);
+    });
   }
 
   return (
