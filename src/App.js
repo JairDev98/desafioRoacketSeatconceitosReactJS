@@ -26,15 +26,10 @@ function App() {
   }
 
   async function handleRemoveRepository(id) {
-    //ele deleta o repositorio
-    //faz o get pra pegar a lista atualizada
-    //faz a copia do array repositorie dento do setRepositories
-    await api.delete(`repositories/${id}`).then(()=>{
-      return api.get('repositories');
-    })
-    .then(reponse=>{
-      setRepositories(reponse.data);
-    });
+    await api.delete(`repositories/${id}`);
+
+    setRepositories(repositories.filter((rep)=>
+    rep.id !==id));
   }
 
   return (
